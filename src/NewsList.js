@@ -40,45 +40,58 @@ export default function NewsList({ category }) {
           console.log(`Error: ${error}`);
         })
     }
-        fetchData();
-  });
+    fetchData();
+  }, []);
 
   const GetNewsList = (News) => {
-    const data = News.filter((news) => {
-      if (news.image_url !== null) {
-        if (news.description !== null) {
+    const filtered = News.filter((news) => {
+      if (news.description !== null) {
+        return true;
+      } else if (news.content !== null) {
           return true;
-        } else if (news.content !== null) {
-            return true;
-        }
       }
       return false;
-    }).slice(0, 3);
-    setData(data);
-    console.log(data);
+    }).sort((a, b) => {
+      console.log(a, b)
+      return (a.image_url === b.image_url) ? 0 : a.image_url !== null ? -1 : 1;   
+    }).slice(0, 3)
+    setData(filtered);
   }
 
   if (Data) {
-    Data.map((news) => {
-    const description = news.description === null ? news.content : news.description;
-    return (
-      <>
-        <h2>{category}</h2>
-        <News
-          title={news.title}
-          image={news.image_url}
-          description={description}
-          link={news.link}
-        />
-      </>    
-    )
+    console.log(Data);
+    const List = Data.map((news, index) => {
+      const description = news.description === null ? news.content : news.description;
+      return (
+        <div key={index}>
+          <News
+            title={news.title}
+            image={news.image_url}
+            description={description}
+            link={news.link}
+          />
+        </div>    
+      )
     })
+    return (
+        <>
+          <h2>{category}</h2>
+          <div className='list'>{List}</div>
+        </>
+    )
   } else {
-      <News
-        title={null}
-        image={null}
-        description={null}
-        link={null}
-      />
+      return (
+        <>
+          <h2>{category}</h2>
+          <div className='list'>
+            <News
+              title={null}
+              image={null}
+              description={null}
+              link={null}
+            />
+          </div>
+        </>
+      )
   }
 }
