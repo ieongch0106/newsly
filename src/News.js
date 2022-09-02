@@ -2,7 +2,6 @@ import React from 'react';
 import unavailable from './No_Image_Available.png';
 
 export default function News({ title, image, description, link }) {
-  console.log(image)
   const imageHandler = (image) => {
     if (image === null) {
       return unavailable;
