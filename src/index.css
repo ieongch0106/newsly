@@ -8,19 +8,29 @@ body {
     -moz-osx-font-smoothing: grayscale;
 }
 
-h3 {
+h2 {
+  font-style: italic;
+  padding-left: 10px;
+}
+
+h2, h3 {
   font-family: Helvetica;
 }
 
 .list {
   display: flex;
   justify-content: center;
-  gap: 75px;
+  gap: 80px;
 }
 
 .news {
   width: 420px;
   height: max-content;
+  margin-bottom: 50px;
+}
+
+.news:hover {
+  cursor: pointer;
 }
 
 .news p {
@@ -28,7 +38,8 @@ h3 {
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;  
   overflow: hidden;
-  padding-left: 10px;
+  margin-left: 10px;
+  padding-left: 12px;
   font-weight: 350;
   border-left: 1px solid lightgrey;
 }

@@ -44,22 +44,21 @@ export default function NewsList({ category }) {
   }, []);
 
   const GetNewsList = (News) => {
-    const filtered = News.filter((news) => {
+    const data = News.filter((news) => {
       if (news.description !== null) {
         return true;
       } else if (news.content !== null) {
           return true;
       }
       return false;
-    }).sort((a, b) => {
-      console.log(a, b)
+    })
+    const filtered = data.sort((a, b) => {
       return (a.image_url === b.image_url) ? 0 : a.image_url !== null ? -1 : 1;   
     }).slice(0, 3)
     setData(filtered);
   }
 
   if (Data) {
-    console.log(Data);
     const List = Data.map((news, index) => {
       const description = news.description === null ? news.content : news.description;
       return (
