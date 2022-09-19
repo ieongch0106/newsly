@@ -13,8 +13,10 @@ export default function News({ title, image, description, link }) {
   }
   return (
     <div className='news' onClick={() => window.location.replace(link)}>
-      <img src={imageHandler(image)} alt='news' />
-      <h3>{title}</h3>
+      <div className='title'>
+        <img src={imageHandler(image)} alt='news' />
+        <h3>{title}</h3>
+      </div>
       <p>{description}</p>
     </div>
   )

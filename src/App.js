@@ -1,5 +1,6 @@
 import Navbar from './Navbar';
 import NewsList from './NewsList';
+import './index.css';
 
 function App() {
 
