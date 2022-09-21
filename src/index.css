@@ -83,7 +83,7 @@ h2, h3 {
 @media (min-width: 1024px) {
   .news img {
     width: calc(26vw);
-    height: calc(32vh);
+    height: calc(30vh);
   }
 
   .news {
